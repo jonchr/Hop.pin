@@ -2,8 +2,7 @@ module.exports = function(sequelize, DataTypes) {
 
 	var Attractions = sequelize.define("Attractions", {
 		placeId: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true
+			type: DataTypes.STRING,
 
 		},
 
@@ -26,20 +25,12 @@ module.exports = function(sequelize, DataTypes) {
 		lat: {
 			type: DataTypes.STRING
 		},
+
 		long: {
 			type: DataTypes.STRING
 		}
 
 	});
-
-	Attractions.associate = function(models) {
-
-		Attractions.belongsTo(models.Users, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
-	};
 
 	return Attractions;
 };
