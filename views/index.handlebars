@@ -1,7 +1,6 @@
 <div id="mapid" style="height: 100vh"></div>
      
 <script>
-
   var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -10,5 +9,5 @@
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
   }).addTo(mymap);
-
+  
 </script> 
