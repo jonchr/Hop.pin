@@ -1,90 +1,14 @@
-<<<<<<< HEAD
-
-   <div id="mapid" style="height: 100vh"></div>
+<div id="mapid" style="height: 100vh"></div>
      
-      <script>
-      var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
+<script>
 
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      maxZoom: 18,
-      id: 'mapbox.streets',
-      accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
-      }).addTo(mymap);
-      </script>      
+  var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<h1>Quotes App</h1>
-
-<p>Manage quotes with this app</p>
-
-<!-- Pass in data from server.js -->
-<ul>
-  {{#each quotes}}
-  	<li>
-  		<p><span class="label">ID:</span> {{this.id}}</p>
-      <p><span class="label">Quote:</span> {{this.quote}}</p>
-      <p><span class="label">Author:</span> {{this.author}}</p>
-
-      <form action="/{{this.id}}?_method=DELETE" method="POST">
-        <input type="hidden" name="id" value="{{this.id}}">
-        <button type="submit">Delete</button>
-      </form>
-
-      <a href="/{{this.id}}">Update this quote</a>
-  	</li>
-  {{/each}}
-</ul>
-
-<h2>Add a Quote</h2>
-
-<form class="create-form" action="/" method="POST">
-
-  <div class="form-group">
-    <label for="auth">Author:</label>
-    <input type="text" id="auth" name="author">
-  </div>
-
-  <div class="form-group">
-    <label for="quo">Quote:</label>
-    <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
-  </div>
-
-  <button type="submit">Add Quote</button>
-</form>
-=======
-    <div id="mapid" style="height: 180px"></div>
-     
-      <script>
-      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: 'your.mapbox.access.token'
-}).addTo(mymap);
-      </script>   
->>>>>>> 4c32e27267693e0ae0b3eacc2bd3dde7f2dce828
-=======
->>>>>>> e6c042881ccf1fb037189a7f10d996878861227f
-<div id="mapid" style="height: 180px"></div>
- 
-<script>
-	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
+  }).addTo(mymap);
 
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		maxZoom: 18,
-		id: 'mapbox.streets',
-		accessToken: 'your.mapbox.access.token'
-	}).addTo(mymap);
-	
-<<<<<<< HEAD
-</script>
-=======
-</script>   
->>>>>>> 16e9f8375611d733d1196d15d64b4d426cb62ffc
->>>>>>> e6c042881ccf1fb037189a7f10d996878861227f
+</script> 
