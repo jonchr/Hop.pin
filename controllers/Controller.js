@@ -12,6 +12,13 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
+  //google api call search using attraction and state
+  //google api rseponse 
+  //add all info into db
+  var userinputAttrac = req.body.attraction
+  var userinputState = req.body.state
+
+
   Attractions.create([
     "attraction", "state", "lat", "long"
   ], [
