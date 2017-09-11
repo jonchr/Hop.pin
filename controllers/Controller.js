@@ -8,24 +8,26 @@ var router = express.Router();
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   console.log("you are in home route");
-  res.render("index");
+  res.render("index.handlebars");
 });
 
 router.post("/", function(req, res) {
-  [model].create([
-    "name", "state"
+  Attractions.create([
+    "attraction", "state", "lat", "long"
   ], [
-    req.body.name, req.body.state
+    req.body.attraction, req.body.state, req.body.lat, req.body.long
   ], function() {
     res.redirect("/");
   });
 });
 
 router.get("api/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+  var input = req.params.id;
 
-  medicine.get(condition, function() {
-    res.redirect("/");
+  Attractions.findAll({
+  where: {
+    placeId: input
+  }
   });
 });
 

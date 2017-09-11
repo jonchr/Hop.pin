@@ -23,9 +23,11 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 
-		latlong: {
-			type: DataTypes.STRING,
-
+		lat: {
+			type: DataTypes.STRING
+		},
+		long: {
+			type: DataTypes.STRING
 		}
 
 	});
