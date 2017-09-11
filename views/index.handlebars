@@ -1,3 +1,4 @@
+
    <div id="mapid" style="height: 100vh"></div>
      
       <script>
@@ -10,3 +11,17 @@
       accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
       }).addTo(mymap);
       </script>      
+
+<div id="mapid" style="height: 180px"></div>
+ 
+<script>
+	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		maxZoom: 18,
+		id: 'mapbox.streets',
+		accessToken: 'your.mapbox.access.token'
+	}).addTo(mymap);
+	
+</script>
