@@ -1,0 +1,29 @@
+{
+  "name": "Hop.in",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonchr/Hop.in.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonchr/Hop.in/issues"
+  },
+  "homepage": "https://github.com/jonchr/Hop.in#readme",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "express": "^4.15.4",
+    "mysql": "^2.14.1",
+    "mysql2": "^1.4.2",
+    "oauth": "^0.9.15",
+    "sequelize": "^4.8.3"
+  }
+}
