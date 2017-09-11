@@ -1,13 +1,50 @@
-<div id="mapid" style="height: 100vh"></div>
-     
-<script>
-  var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
+<!-- This is for leaflet- Username willy4  email willtark@yahoo.com  password Gwcoding4444 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
 
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
-  }).addTo(mymap);
-  
-</script> 
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin=""></script>
+  <title>Hop.In</title>
+</head>
+<body>
+    <div id="mapid" style="height: 100vh"></div>
+     
+      <script>
+      var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
+
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
+      }).addTo(mymap);
+
+//this is where the pins are
+//pins are var then name them, the line under the var is where the text goes 
+      var WhiteHouse = L.marker([38.8975699,-77.03713257]).addTo(mymap);
+      WhiteHouse.bindPopup("<b>Hello world!</b><br>I am a joke.").openPopup();
+
+      var WashingtonMon = L.marker([38.8894528,-77.0353046]).addTo(mymap);
+      WashingtonMon.bindPopup("<b>Hello world!</b><br>I look like a penis.").openPopup();
+
+
+      var Capital = L.marker([38.8896999,-77.0100788]).addTo(mymap);
+      Capital.bindPopup("<b>Hello USA!</b><br>I am Your leader.").openPopup();
+
+
+      var LincolnMem = L.marker([38.8890679,-77.05007]).addTo(mymap);
+      LincolnMem.bindPopup("<b>Hello Abe!</b><br>I am a memorial.").openPopup();
+
+      var ThomasJefferson = L.marker([38.8809649,-77.0358736]).addTo(mymap);
+      ThomasJefferson.bindPopup("<b>Hello TJ!</b><br>I am a monument.").openPopup();
+
+      </script>      
+</body>
+
+</html>
