@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Quotes App</h1>
 
 <p>Manage quotes with this app</p>
@@ -36,3 +37,17 @@
 
   <button type="submit">Add Quote</button>
 </form>
+=======
+    <div id="mapid" style="height: 180px"></div>
+     
+      <script>
+      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+      </script>   
+>>>>>>> 4c32e27267693e0ae0b3eacc2bd3dde7f2dce828
