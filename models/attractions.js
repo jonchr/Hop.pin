@@ -1,11 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
 	var Attractions = sequelize.define("Attractions", {
-		placeId: {
-			type: DataTypes.STRING,
-
-		},
-
 		attraction: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -21,13 +16,20 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1]
 			}
 		},
-
+		
+		route: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				len: [1]
+			}
+		},
 		lat: {
-			type: DataTypes.STRING
+			type: DataTypes.FLOAT
 		},
 
-		long: {
-			type: DataTypes.STRING
+		lng: {
+			type: DataTypes.FLOAT
 		}
 
 	});
