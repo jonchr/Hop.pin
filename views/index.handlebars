@@ -45,7 +45,38 @@
   // L.popup(minWidth=200);
 
   {{this.route}}.bindPopup(temppop, { className: "popcss" }).openPopup();
-  {{/each}}  
+
+  $({{this.route}}).on("click", function() {
+
+  		console.log("{{this.attraction}}" + " this is going");
+
+  		var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeURI(place) + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
+
+		$.ajax({
+
+			url: queryURL,
+			method: "GET"
+
+		}).done(function(results) {
+
+			texty = "<b>" + place + "</b><br>" + results[0].formatted_address + "<br>";
+			queryURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + results.photos[0].photo_reference + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
+
+
+			$.ajax({
+				url: queryURL,
+				method: "GET"
+
+			}).done(function(results) {
+
+				// texty += results[0].getUrl({ "maxWidth": 50px, "maxHeight": 50px}); //we'll figure this part out a little later
+				{{this.route}}.bindPopup(texty).openPopup();
+
+			})
+		})
+});
+
+{{/each}}  
 
   $("#modalButton").on("click", function() {
     $("#myModal").modal();
