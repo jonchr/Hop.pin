@@ -62,7 +62,7 @@
 			texty = "<b>" + place + "</b><br>" + results[0].formatted_address + "<br>";
 			queryURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + results.photos[0].photo_reference + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
 
-
+			// second api call for the photo, we may not even need this
 			$.ajax({
 				url: queryURL,
 				method: "GET"
