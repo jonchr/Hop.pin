@@ -20,34 +20,38 @@
   <script>
 
   var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
-
-var CartoDB_Positron = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+  mymap.createPane('labels');
+  mymap.getPane('labels').style.zIndex = 650;
+  mymap.getPane('labels').style.pointerEvents = 'none';
+  
+  var positron = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
   subdomains: 'abcd',
   maxZoom: 19
-});
-
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1Ijoid2lsbHl0NCIsImEiOiJjajdnaTE4a2wxOG5uMzNvNjdpMHBuYm1xIn0.rYXRK735nfMReoIB7JD6Sg'
-  }).addTo(mymap);
+  });
+  positron.addTo(mymap);
 
 //this is where the pins are
 //pins are var then name them, the line under the var is where the text goes 
+
+//var popup = L.popup().className("popcss");  
+
 {{#each attractions}}
   var {{this.route}} = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
   //console.log("attraction" + typeof JSON.stringify({{this.route}}));
   var place = "{{this.attraction}}"
   var texty = "<b>" + place + "</b><br>description from google api."
-  console.log(texty);
-  {{this.route}}.bindPopup(texty).openPopup();
+  var temppop = L.popup().setContent(texty);
+  // L.popup(minWidth=200);
+
+  {{this.route}}.bindPopup(temppop, { className: "popcss" }).openPopup();
   {{/each}}  
 
   $("#modalButton").on("click", function() {
     $("#myModal").modal();
   });
+
+
   
 </script>      
 
