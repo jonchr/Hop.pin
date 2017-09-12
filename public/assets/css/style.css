@@ -1,3 +1,8 @@
+body {
+    background-image: url("http://cdn.wallpapersafari.com/94/64/39FDrH.jpg");
+	background-size: 100%
+}
+
 #locationField, #controls {
   position: relative;
   width: 480px;
@@ -57,8 +62,11 @@ html, body {
 	font-family: 'Shadows Into Light', cursive;
 	font-size:90pt;
 	color:white;
+	margin:0;
 }
 
 .jumbotron{
 	background-color: #d05748;
+	height: 200px;
+	padding:20px;
 }
