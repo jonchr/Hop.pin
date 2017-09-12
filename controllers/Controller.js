@@ -9,7 +9,7 @@ var Attractions = models.Attractions;
 // Create all our routes and set up logic within those routes where required.
 
 router.get("/", function(req, res) {
-  Attractions.findAll().then(function (data){
+  Attractions.findAll({}).then(function (data){
     console.log("you are in home route");
     res.render("index.handlebars", {attractions: data});   
   })
@@ -24,7 +24,7 @@ router.post("/", function(req, res) {
 
 
   Attractions.create([
-    "attraction", "state", "lat", "long"
+    "attraction", "state", "lat", "lng"
   ], [
     req.body.attraction, req.body.state, req.body.lat, req.body.long
   ], function() {
