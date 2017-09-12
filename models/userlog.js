@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-	var Userlog = sequelize.define("Users", {
+	var Userlog = sequelize.define("Userlog", {
 
 		username: {
 			type: DataTypes.STRING,
@@ -17,5 +17,5 @@ module.exports = function(sequelize, DataTypes) {
 
 	});
 
-	return Users;
+	return Userlog;
 };
