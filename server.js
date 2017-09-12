@@ -8,6 +8,7 @@ var morgan = require('morgan');
 
 var passport = require('passport');
 var flash    = require('connect-flash');
+
 require('./config/passport')(passport); // pass passport for configuration
 
 var port = process.env.PORT || 3000;
@@ -36,7 +37,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/Controller.js")(passport);
+var routes = require("./controllers/Controller.js");
 
 app.use("/", routes);
 

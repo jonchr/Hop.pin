@@ -1,7 +1,8 @@
 var express = require("express");
-
 var router = express.Router();
 
+var passport = require("passport");
+require('../config/passport')(passport); // pass passport for configuration
 // Import the model (medicine.js) to use its database functions.
 var models = require("../models");
 var Attractions = models.Attractions; 
@@ -48,8 +49,8 @@ router.get("api/:id", function(req, res) {
 
 // process the login form
 router.post('/login', passport.authenticate('local-login', {
-          successRedirect : '/profile', // redirect to the secure profile section
-          failureRedirect : '/login', // redirect back to the signup page if there is an error
+          successRedirect : '/', // redirect to the secure profile section
+          failureRedirect : '/', // redirect back to the signup page if there is an error
           failureFlash : true // allow flash messages
   }),
       function(req, res) {
@@ -79,7 +80,7 @@ router.post('/login', passport.authenticate('local-login', {
   }));
 
   //Logout
-  app.get('/logout', function(req, res) {
+  router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
   });
