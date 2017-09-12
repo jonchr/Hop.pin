@@ -52,3 +52,13 @@ html, body {
 .popcss{
 	color:red;
 }
+
+#JTtitle{
+	font-family: 'Shadows Into Light', cursive;
+	font-size:90pt;
+	color:white;
+}
+
+.jumbotron{
+	background-color: #d05748;
+}

@@ -24,10 +24,10 @@
   mymap.getPane('labels').style.zIndex = 650;
   mymap.getPane('labels').style.pointerEvents = 'none';
   
-  var positron = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+  var positron = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-  subdomains: 'abcd',
-  maxZoom: 19
+  maxZoom: 16,
+  ext: 'png'
   });
   positron.addTo(mymap);
 
@@ -45,7 +45,38 @@
   // L.popup(minWidth=200);
 
   {{this.route}}.bindPopup(temppop, { className: "popcss" }).openPopup();
-  {{/each}}  
+
+  $({{this.route}}).on("click", function() {
+
+  		console.log("{{this.attraction}}" + " this is going");
+
+  		var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeURI(place) + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
+
+		$.ajax({
+
+			url: queryURL,
+			method: "GET"
+
+		}).done(function(results) {
+
+			texty = "<b>" + place + "</b><br>" + results[0].formatted_address + "<br>";
+			queryURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + results.photos[0].photo_reference + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
+
+			// second api call for the photo, we may not even need this
+			$.ajax({
+				url: queryURL,
+				method: "GET"
+
+			}).done(function(results) {
+
+				// texty += results[0].getUrl({ "maxWidth": 50px, "maxHeight": 50px}); //we'll figure this part out a little later
+				{{this.route}}.bindPopup(texty).openPopup();
+
+			})
+		})
+});
+
+{{/each}}  
 
   $("#modalButton").on("click", function() {
     $("#myModal").modal();
