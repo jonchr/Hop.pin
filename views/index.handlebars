@@ -4,7 +4,7 @@
     <h1 class="text-center" id="JTtitle"><strong>Gifspiration</strong></h1>
     {{!-- <a class="btn btn-danger btn-lg" href="#" data-toggle="modal" data-target="#exampleModal"><h1>+</h1></a> --}}
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-primary" id="modalButton" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button>
   </div> <!-- jumbotron class -->
@@ -15,22 +15,43 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      {{!-- {{modal-content}} to fix later --}}
+
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="exampleModalLabel">Log In</h1>
+      </div> {{!-- /.modal-header --}}
+
       <div class="modal-body">
-        ...
-      </div>
+        <!-- show any messages that come back with authentication -->
+        <!--      <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+        <% } %> -->
+        <!-- LOGIN FORM -->
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+                <label>Remember Me</label>
+                <input type="checkbox" class="form-control" name="remember" value="yes">
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        </form>
+      </div>{{!-- /.modal-body --}}
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+      </div> {{!-- /.modal-footer --}}
+    </div> {{!-- /.modal-content --}}
+  </div> {{!-- /.modal-dialog --}}
+</div> {{!-- /.modal --}}
 
 
 </div>  <!-- container -->
@@ -57,7 +78,9 @@
   {{this.route}}.bindPopup(texty).openPopup();
   {{/each}}  
 
-  $('#myModal').modal();
+  $("#modalButton").on("click", function() {
+    $("#myModal").modal();
+  });
   
 </script>      
 
