@@ -51,7 +51,8 @@
 {{#each attractions}}
   var {{this.route}} = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
   //console.log("attraction" + typeof JSON.stringify({{this.route}}));
-  var texty = "<b>" + {{this.route}} + "</b><br>description from google api."
+  var place = "{{this.attraction}}"
+  var texty = "<b>" + place + "</b><br>description from google api."
   console.log(texty);
   {{this.route}}.bindPopup(texty).openPopup();
   {{/each}}  
