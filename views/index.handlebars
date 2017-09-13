@@ -5,6 +5,9 @@
     <a href="/logout" style="text-align: right;">{{ logout }}</a>
   </h4>
 </span> --}}
+
+<div class="container" id="maincontain">
+{{!-- Displays username and provides logout via dropdown menu. Only appears when user is logged in thanks to jQuery --}}
 <span class="dropdown btn-group pull-right" style="margin-right: 15px;" id="welcomeButton">
   <button type="button" class="btn btn-danger dropdown-toggle" id="logoutButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ message }}
   </button>
@@ -13,7 +16,6 @@
   </span>
 </span>
 
-<div class="container" id="maincontain">
   <div class="row">
     <div class="col-md-8 col-md-offset-2"><!-- jumbotron col -->
       <div class="jumbotron">
