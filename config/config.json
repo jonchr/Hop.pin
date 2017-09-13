@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "12345",
+    "password": "",
     "database": "hopin_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "z91snw0fn36y0hw0",
+    "password": "ntkvx01jri0wxmy2",
+    "database": "vlu97ud0tq19pc5u",
+    "host": "p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

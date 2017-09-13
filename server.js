@@ -1,36 +1,31 @@
 // set up ======================================================================
 var express = require("express");
-var session  = require('express-session');
-var cookieParser = require('cookie-parser');
-var bodyParser = require("body-parser");
+var session  = require("express-session");
 var exphbs = require("express-handlebars");
-var morgan = require('morgan');
-
-var passport = require('passport');
-var flash    = require('connect-flash');
-
-require('./config/passport')(passport); // pass passport for configuration
+var bodyParser = require("body-parser");
 
 var port = process.env.PORT || 3000;
 
 var app = express();
 var db = require("./models");
 
+var passport = require("passport");
+require('./config/passport')(passport); // pass passport for configuration
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // required for passport
 app.use(session({
-	secret: 'vidyapathaisalwaysrunning',
+	secret: "teammodest",
 	resave: true,
 	saveUninitialized: true
  } )); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+
 
 // Set Handlebars.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
