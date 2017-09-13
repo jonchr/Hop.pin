@@ -109,6 +109,14 @@ h3{
 	margin:0;
 }
 
+h2{
+	font-family: 'Shadows Into Light', cursive;
+	font-size:25pt;
+	color:white;
+	padding:10px;
+	margin:0;
+}
+
 #explainpanel{
 	background-color:rgba(2,138,136,.9);
 	padding:25px 30px 25px 30px;
@@ -142,11 +150,22 @@ h3{
 
 /* Commenting out this so that the modal appears in front of the map*/
 .modal{
-    z-index: 20;   
+    z-index: 20; 
 }
 .modal-backdrop{
     z-index: 10;        
 }​
+
+.modal.custom .modal-dialog {
+    width:50%;
+    margin:0 auto;
+    /*add what you want here*/}
+
+#modaldial{
+	background-color: rgba(79,78,156,.9);
+	padding:30px;	
+}
+
 
 .footer {
   position: absolute;
@@ -158,3 +177,13 @@ h3{
   background-color: ;
   margin:30px 0 0 0;
 }
+
+
+#submitbut{
+	margin: 30px 0px 0px 0px;
+
+}
+
+@media (min-width: 1200px)
+grid.less:7
+.container
