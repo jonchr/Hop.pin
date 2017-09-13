@@ -120,6 +120,8 @@ h3{
     display: inline-block;
     float: left;
 }
+
+/* Commenting out this so that the modal appears in front of the map*/
 .modal{
     z-index: 20;   
 }
