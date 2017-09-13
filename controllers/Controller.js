@@ -39,17 +39,20 @@ app.get("/", isLoggedIn, function(req, res) {
 });
 
 app.post("/", function(req, res) {
-  //google api call search using attraction and state
-  //google api response 
   //add all info into db
-  var userinputAttrac = req.body.attraction
-  var userinputState = req.body.state
+  var userinputlat = req.body.lat;
+  var userinputlng = req.body.lng;
+  var userinputattr = req.body.name;
+  var userinputstate = req.body.state;
 
-  Attractions.create([
-    "attraction", "state", "lat", "lng"
-  ], [
-    req.body.attraction, req.body.state, req.body.lat, req.body.long
-  ], function() {
+  Attractions.create(
+  {
+    "attraction": userinputattr,
+    "state": userinputstate,
+    "lat": userinputlat,
+    "lng":userinputlng,
+    "route" :"theroute"
+  }).then(function() {
     res.redirect("/");
   });
 });
