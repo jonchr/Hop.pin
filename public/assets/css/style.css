@@ -82,16 +82,37 @@ html, body {
 #modalButton{
 	font-family: 'Shadows Into Light', cursive;
 	font-size:40pt;
-	color:#4f4e9c;
-	background-color: rgba(117, 190, 218, 0.0);
-	height:70px;
-	width:70px;
-	padding: 0px;
-	border-color: white;
-	position: absolute;
-	top: 30px;
-	right:-80px;	
+	color:white;
+	background-color: rgba(2,138,136, 1);
+	height:100px;
+	width:100px;
+	padding: 20px 18px 20px 15px;
+	border-color: rgba(2,138,136, 1);
 }
+
+h3{
+	font-family: 'Faustina', serif;
+	font-size:15pt;
+	color:white;
+	padding:0;
+	margin:0;
+}
+
+#explainpanel{
+	background-color:rgba(2,138,136,.9);
+	padding:25px 30px 25px 30px;
+	float:left;
+	width:80%;
+}
+
+#buttonpan{
+	float:right;
+	width:10%;
+	margin-right:5%;
+	background-color: rgba(2,138,136,0.0);
+	margin-top:10px;
+}
+
 
 .footer {
   position: absolute;

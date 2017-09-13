@@ -1,35 +1,32 @@
-<<<<<<< Updated upstream
-<div class="container">
-
-  <div class="jumbotron">
-  
-    <h1 class="text-center" id="JTtitle"><strong>Hop.pin</h1></strong></h1>
-    <button type="button" class="btn btn-success pull-right" id="modalButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-plus"</span></button>
-
-  </div> <!-- jumbotron class -->
-
-=======
 <div class="container" id="maincontain">
   <div class="row">
     <div class="col-md-8 col-md-offset-2"><!-- jumbotron col -->
       <div class="jumbotron">
         
         <h1 class="text-center" id="JTtitle"><strong>Hop.pin</h1></strong></h1>
-        
-        <button type="button" class="btn btn-danger" id="modalButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-map-marker"></span>
-        </button>
               
       </div> <!-- jumbotron class -->
     </div> <!-- jumbotron col -->
-    <div class="col-md-1"> <!-- button col -->
-    </div><!-- button col -->
   </div>
-  <div class="row">
-  <div class="col-md-10 col-md-offset-1">
->>>>>>> Stashed changes
-  <div id="mapid" style="height: 100vh"></div>
-  </div>
-  </div>
+  
+  <div class="row"><!-- dialog row -->
+    <div class="col-md-10 col-md-offset-1"> <!-- dialog col -->
+      <div class="panel" id="explainpanel">
+        <h3> Welcome to Hop.Pin, the best site to find popular, highly rated attractions for your next trip. Search below for new ideas of places to visit, or add a new hoppin' site with the marker button --></h3> 
+      </div> 
+      <div class="panel" id="buttonpan">  
+        <button type="button" class="btn btn-danger" id="modalButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-map-marker"></span>
+        </button>
+      </div>  
+    </div><!-- dialog col -->
+  </div><!-- dialog row -->      
+
+
+  <div class="row"><!-- map row -->
+    <div class="col-md-10 col-md-offset-1"><!-- map col -->
+      <div id="mapid" style="height: 100vh"></div>
+    </div><!-- map col -->
+  </div><!-- map row -->
 
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
