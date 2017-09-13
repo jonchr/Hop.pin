@@ -33,8 +33,7 @@ app.get("/", isLoggedIn, function(req, res) {
       attractions: data, 
       whichPartial: function() { return "googAutoFill"; },
       user: req.user,
-      message: "Welcome, " + req.user.username,
-      logout: "Logout"
+      message: "Welcome, " + req.user.username
     });   
     console.log(req.user);
   });
