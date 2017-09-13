@@ -9,7 +9,9 @@ var flash    = require('connect-flash');
 require('../config/passport')(passport); // pass passport for configuration
 
 var models = require("../models");
-var Attractions = models.Attractions; 
+var Attractions = models.Attractions;
+var Userlogs = models.Userlog;
+var username; 
 
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(session({
@@ -36,6 +38,8 @@ app.get("/", isLoggedIn, function(req, res) {
       message: "Welcome, " + req.user.username
     });   
     console.log(req.user);
+    username = req.user.username;
+    
   });
 });
 
@@ -52,6 +56,13 @@ app.post("/", function(req, res) {
     "state": userinputstate,
     "lat": userinputlat,
     "lng":userinputlng,
+
+  })
+
+    Userlogs.create(
+    {
+      "username": username,
+      "attraction": req.body.name
 
   }).then(function() {
     res.redirect("/");
