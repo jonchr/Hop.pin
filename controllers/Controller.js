@@ -32,7 +32,9 @@ app.get("/", isLoggedIn, function(req, res) {
     res.render("index", { 
       attractions: data, 
       whichPartial: function() { return "googAutoFill"; },
-      user: req.user
+      user: req.user,
+      message: "Welcome, " + req.user.username,
+      logout: "Logout"
     });   
     console.log(req.user);
   });
@@ -82,7 +84,7 @@ app.get("/login", function(req, res) {
 // process the login form
 app.post('/login', passport.authenticate('local-login', {
   successRedirect : '/', // redirect to the secure profile section
-  failureRedirect : '/fail', // redirect back to the signup page if there is an error
+  failureRedirect : '/login', // redirect back to the signup page if there is an error
 }),
   function(req, res) {
     console.log("hello");
