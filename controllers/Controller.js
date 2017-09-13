@@ -1,29 +1,46 @@
 var express = require("express");
-var router = express.Router();
+var app = express();
 
-var session  = require("express-session");
+var session  = require("cookie-session");
 var cookieParser = require('cookie-parser');
 var passport = require("passport");
+var flash    = require('connect-flash');
+
 require('../config/passport')(passport); // pass passport for configuration
 
 var models = require("../models");
 var Attractions = models.Attractions; 
 
-router.use(cookieParser());
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(session({
+  secret: "teammodest",
+  resave: true,
+  saveUninitialized: true
+ } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", isLoggedIn, function(req, res) {
+//If you're not logged in, sends you to the login path
+app.get("/", isLoggedIn, function(req, res) {
   Attractions.findAll({}).then(function (data){
     console.log("you are in home route");
 
     //If not logged in
-    res.render("index", {attractions: data, whichPartial: function() { return "googAutoFill"; } });   
+    res.render("index", { 
+      attractions: data, 
+      whichPartial: function() { return "googAutoFill"; },
+      user: req.user
+    });   
+    console.log(req.user);
   });
 });
 
-router.post("/", function(req, res) {
+app.post("/", function(req, res) {
   //google api call search using attraction and state
-  //google api rseponse 
+  //google api response 
   //add all info into db
   var userinputAttrac = req.body.attraction
   var userinputState = req.body.state
@@ -37,7 +54,7 @@ router.post("/", function(req, res) {
   });
 });
 
-router.get("api/:id", function(req, res) {
+app.get("api/:id", function(req, res) {
   var input = req.params.id;
 
   Attractions.findAll({
@@ -51,16 +68,18 @@ router.get("api/:id", function(req, res) {
 // LOGIN ===============================
 // =====================================
 
-router.get("/login", function(req, res) {
+app.get("/login", function(req, res) {
 
-  res.render('index', { whichPartial: function() { return "login";} });
+  res.render('index', { 
+    whichPartial: function() { return "login";}
+    });
 
 });
 
 // process the login form
-router.post('/login', passport.authenticate('local-login', {
+app.post('/login', passport.authenticate('local-login', {
   successRedirect : '/', // redirect to the secure profile section
-  failureRedirect : '/login', // redirect back to the signup page if there is an error
+  failureRedirect : '/fail', // redirect back to the signup page if there is an error
 }),
   function(req, res) {
     console.log("hello");
@@ -89,7 +108,7 @@ function isLoggedIn(req, res, next) {
 // SIGNUP ==============================
 // =====================================
 
-router.get('/signup', function(req, res) {
+app.get('/signup', function(req, res) {
   // render the page and pass in any flash data if it exists
   
   res.render('partials/signup.handlebars');
@@ -99,7 +118,7 @@ router.get('/signup', function(req, res) {
 });
 
 // process the signup form
-router.post('/signup', passport.authenticate('local-signup', {
+app.post('/signup', passport.authenticate('local-signup', {
   successRedirect : '/', // redirect to the secure profile section
   failureRedirect : '/signup', // redirect back to the signup page if there is an error
 }));
@@ -107,11 +126,11 @@ router.post('/signup', passport.authenticate('local-signup', {
 // =====================================
 // LOGOUT ==============================
 // =====================================
-router.get('/logout', function(req, res) {
+app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
 
 // Export routes for server.js to use.
-module.exports = router;
+module.exports = app;
 

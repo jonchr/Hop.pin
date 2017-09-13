@@ -1,6 +1,6 @@
 // set up ======================================================================
 var express = require("express");
-var session  = require("express-session");
+var session  = require("cookie-session");
 var cookieParser = require('cookie-parser');
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
@@ -36,7 +36,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/Controller2.js");
+var routes = require("./controllers/Controller.js");
 
 app.use("/", routes);
 
