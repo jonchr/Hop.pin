@@ -42,7 +42,7 @@
 
   <div class="row"><!-- map row -->
     <div class="col-md-10 col-md-offset-1"><!-- map col -->
-      <div id="mapid" style="height: 100vh"></div>
+      <div id="mapid" style="height: 100vh; z-index:9"></div>
     </div><!-- map col -->
   </div><!-- map row -->
 
@@ -55,10 +55,7 @@
       </div> {{!-- /.modal-content --}}
     </div> {{!-- /.modal-dialog --}}
   </div> {{!-- /.modal --}}
-
 </div>  <!-- container -->
-
-
 
 <footer class="footer text-right">
   <div class="container">
@@ -86,16 +83,16 @@
 //var popup = L.popup().className("popcss");  
 
 {{#each attractions}}
-  var {{this.route}} = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
+  var temp = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
   //console.log("attraction" + typeof JSON.stringify({{this.route}}));
   var place = "{{this.attraction}}"
   var texty = "<b>" + place + "</b><br>description from google api."
   var temppop = L.popup().setContent(texty);
   // L.popup(minWidth=200);
 
-  {{this.route}}.bindPopup(temppop, { className: "popcss" }).openPopup();
+  temp.bindPopup(temppop, { className: "popcss" }).openPopup();
 
-  $({{this.route}}).on("click", function() {
+  temp.on("click", function() {
 
   		console.log("{{this.attraction}}" + " this is going");
 
@@ -119,7 +116,7 @@
 			}).done(function(results) {
 
 				// texty += results[0].getUrl({ "maxWidth": 50px, "maxHeight": 50px}); //we'll figure this part out a little later
-				{{this.route}}.bindPopup(texty).openPopup();
+				temp.bindPopup(texty).openPopup();
 
 			})
 		})

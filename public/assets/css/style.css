@@ -54,10 +54,6 @@ html, body {
   padding: 0;
 }
 
-.leaflet-popup{
-
-}
-
 .leaflet-popup-content-wrapper{
 	background-color:rgba(255, 255, 255, 0.9);
 	height:200px;
@@ -165,7 +161,6 @@ h2{
 	background-color: rgba(79,78,156,.9);
 	padding:30px;	
 }
-
 
 .footer {
   position: absolute;
