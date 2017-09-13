@@ -79,6 +79,17 @@ html, body {
 	padding: 20px;
 }
 
+#userButton{
+	font-family: 'Shadows Into Light', cursive;
+	font-size:40pt;
+	color:white;
+	background-color: rgba(2,138,136, 1);
+	height:100px;
+	width:100px;
+	padding: 20px 18px 20px 15px;
+	border-color: rgba(2,138,136, 1);
+}
+
 #modalButton{
 	font-family: 'Shadows Into Light', cursive;
 	font-size:40pt;
@@ -102,13 +113,21 @@ h3{
 	background-color:rgba(2,138,136,.9);
 	padding:25px 30px 25px 30px;
 	float:left;
-	width:80%;
+	width:70%;
+	margin-right: 5%;
+	margin-left: 5%;
 }
 
 #buttonpan{
 	float:right;
 	width:10%;
-	margin-right:5%;
+	background-color: rgba(2,138,136,0.0);
+	margin-top:10px;
+}
+
+#userpan{
+	float:left;
+	width:10%;
 	background-color: rgba(2,138,136,0.0);
 	margin-top:10px;
 }

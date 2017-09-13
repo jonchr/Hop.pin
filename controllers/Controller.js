@@ -131,7 +131,7 @@ app.post('/signup', passport.authenticate('local-signup', {
 // =====================================
 app.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 // Export routes for server.js to use.
