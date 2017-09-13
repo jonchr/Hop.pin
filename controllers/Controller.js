@@ -39,7 +39,7 @@ app.get("/", isLoggedIn, function(req, res) {
     });   
     console.log(req.user);
     username = req.user.username;
-    
+
   });
 });
 
@@ -64,10 +64,11 @@ app.post("/", function(req, res) {
       "username": username,
       "attraction": req.body.name
 
-  }).then(function() {
+  })
+
     res.redirect("/");
+
   });
-});
 
 app.get("api/:id", function(req, res) {
   var input = req.params.id;
@@ -144,6 +145,7 @@ app.post('/signup', passport.authenticate('local-signup', {
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/login');
+
 });
 
 // Export routes for server.js to use.
