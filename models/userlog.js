@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 
-		placeId: {
+		attraction: {
 			type: DataTypes.STRING,
 
 		}

@@ -17,13 +17,6 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 		
-		route: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1]
-			}
-		},
 		lat: {
 			type: DataTypes.FLOAT
 		},

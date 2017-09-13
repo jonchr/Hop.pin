@@ -51,7 +51,7 @@ app.post("/", function(req, res) {
     "state": userinputstate,
     "lat": userinputlat,
     "lng":userinputlng,
-    "route" :"theroute"
+
   }).then(function() {
     res.redirect("/");
   });
