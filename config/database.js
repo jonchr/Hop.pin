@@ -10,6 +10,8 @@ module.exports = {
     'database': "vlu97ud0tq19pc5u",
     'users_table': 'users'
 
+};
+
     //Local database
 //     'connection': {
 //         'host': "localhost",
