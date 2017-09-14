@@ -117,12 +117,12 @@ var redIcon = L.icon({
 {{#each attractions}}
 var markerLocation = new L.LatLng({{this.lat}}, {{this.lng}});
 var mapicon;
-var counter = 1
-if(counter<2){
+var counter = {{this.counter}};
+if(counter<5){
   mapicon = yellowIcon;
-}else if (counter > 5 && counter < 8){
+}else if (counter >= 5 && counter <= 8){
   mapicon = orangeIcon;
-}else {
+}else if (counter > 8){
   mapicon = redIcon;
 }
 
@@ -164,6 +164,7 @@ $(document).on("click", ".popupbtn", function(){
   event.preventDefault();
   var idpass = this.id;
   console.log("idpass is "+idpass);
+  console.log(counter);
   var passer = {
     "attractionId": idpass
   }
