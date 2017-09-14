@@ -53,9 +53,8 @@ app.post("/", function(req, res) {
   Attractions.create(
   {
     "attraction": userinputattr,
-    "state": userinputstate,
     "lat": userinputlat,
-    "lng":userinputlng,
+    "lng": userinputlng
 
   })
 

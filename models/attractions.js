@@ -8,14 +8,6 @@ module.exports = function(sequelize, DataTypes) {
 				len: [1]
 			}
 		},
-
-		state: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [1]
-			}
-		},
 		
 		lat: {
 			type: DataTypes.FLOAT
