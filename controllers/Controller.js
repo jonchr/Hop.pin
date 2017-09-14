@@ -23,18 +23,37 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+var isloggy = true;
 
 // Create all our routes and set up logic within those routes where required.
 //If you're not logged in, sends you to the login path
 app.get("/", isLoggedIn, function(req, res) {
-  Attractions.findAll({}).then(function (data){
+  // Attractions.hasMany(Userlogs);
+  // Attractions.findAll({
+  //     include: [
+  //       {
+  //         model: Userlogs,
+  //       }
+  //     ]
+  //   }).then(function (data){
+    Attractions.findAll({}).then(function (data){
     console.log("you are in home route");
+    
+    if(req.user.username=""){
+      isloggy = false;
+      console.log("controller loggy is "+isloggy);
+    }
+    else{
+      isloggy = true;
+      console.log("controller loggy is "+isloggy);
+    }
 
     //If not logged in
     res.render("index", { 
       attractions: data, 
       whichPartial: function() { return "googAutoFill"; },
       user: req.user,
+      loggedin: isloggy,
       message: "Welcome, " + req.user.username
     });   
     console.log(req.user);
@@ -67,7 +86,20 @@ app.post("/", function(req, res) {
 
     res.redirect("/");
 
-  });
+});
+
+app.post("/usercount", function(req, res) {
+  //add all info into db
+  var userinputattr = req.body.name;
+
+    Userlogs.create(
+    {
+      "username": username,
+      "attraction": userinputattr
+  })
+
+    res.redirect("/");
+});
 
 app.get("api/:id", function(req, res) {
   var input = req.params.id;

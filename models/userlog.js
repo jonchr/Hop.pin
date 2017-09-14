@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		},
 
-		attraction: {
+		AttractionId: {
 			type: DataTypes.STRING,
 
 		}

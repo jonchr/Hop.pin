@@ -8,13 +8,13 @@
 
 <div class="container" id="maincontain">
 {{!-- Displays username and provides logout via dropdown menu. Only appears when user is logged in thanks to jQuery --}}
-<span class="dropdown btn-group pull-right" style="margin-right: 15px;" id="welcomeButton">
+{{!-- <span class="dropdown btn-group pull-right" style="margin-right: 15px;" id="welcomeButton">
   <button type="button" class="btn btn-danger dropdown-toggle" id="logoutButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ message }}
   </button>
   <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <h4 style="text-align: right; margin-right: 10px;"><a class="dropdown-item" href="/logout">Logout</a></h4>
   </span>
-</span>
+</span> --}}
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2"><!-- jumbotron col -->
@@ -28,7 +28,11 @@
   
   <div class="row"><!-- dialog row -->
     <div class="col-md-9 col-md-offset-1"> <!-- dialog col -->
-          
+      <div class="panel" id="userpan">  
+        <button type="button" class="btn btn-danger useroption" id="welcomeButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-ok"></span><p>{{ message }}</p></button>   
+        <button type="button" class="btn btn-danger useroption" id="loginButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-remove"></span><p>{{ message }}</p>
+        </button>          
+      </div>         
       <div class="panel" id="explainpanel">
         <h3> Welcome to Hop.Pin, the best site to find popular, highly rated attractions for your next trip. Search the map for new ideas of places to visit or add a new hoppin' site with the marker button.</h3> 
       </div> 
@@ -63,75 +67,98 @@
   </div>
 </footer>  
  
-  <script>
+<script>
 
-  var mymap = L.map('mapid').setView([38.9072, -77.0369], 11);
-  mymap.createPane('labels');
-  mymap.getPane('labels').style.zIndex = 650;
-  mymap.getPane('labels').style.pointerEvents = 'none';
-  
-  var positron = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+var mymap = L.map('mapid').setView([38.9072, -77.0369], 11);
+mymap.createPane('labels');
+mymap.getPane('labels').style.zIndex = 650;
+mymap.getPane('labels').style.pointerEvents = 'none';
+
+var positron = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
   maxZoom: 16,
   ext: 'png'
-  });
-  positron.addTo(mymap);
-
-//this is where the pins are
-//pins are var then name them, the line under the var is where the text goes 
-
-//var popup = L.popup().className("popcss");  
+});
+positron.addTo(mymap);
 
 {{#each attractions}}
-  var temp = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
-  //console.log("attraction" + typeof JSON.stringify({{this.route}}));
-  var place = "{{this.attraction}}"
-  var texty = "<b>" + place + "</b><br>description from google api."
-  var temppop = L.popup().setContent(texty);
-  // L.popup(minWidth=200);
+var temp = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
+var place = "{{this.attraction}}";
+var router = {{this.id}};
+//var modeler = {{this.model}}
+var texty = "<h3 class='buttonh3'>" + place + "</h3><br><button type='submit' class='btn btn-default popupbtn' id="+router+">I've been here!</button>";
+var temppop = L.popup().setContent(texty);
 
-  temp.bindPopup(temppop, { className: "popcss" });
+console.log({{this.model}})
 
-  temp.on("click", function() {
+temp.bindPopup(temppop, { className: "popcss" });
 
-  		console.log("{{this.attraction}}" + " this is going");
+// temp.on("click", function() {
 
-  		var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeURI(place) + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
+// 		console.log("{{this.attraction}}" + " this is going");
 
-		$.ajax({
+// 		var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeURI(place) + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
 
-			url: queryURL,
-			method: "GET"
+// 	$.ajax({
 
-		}).done(function(results) {
+// 		url: queryURL,
+// 		method: "GET"
 
-			texty = "<b>" + place + "</b><br>" + results[0].formatted_address + "<br>";
-			queryURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + results.photos[0].photo_reference + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
+// 	}).done(function(results) {
 
-			// second api call for the photo, we may not even need this
-			$.ajax({
-				url: queryURL,
-				method: "GET"
+// 		texty = "<b>" + place + "</b><br>" + results[0].formatted_address + "<br>";
+// 		queryURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + results.photos[0].photo_reference + "&key=AIzaSyB3JP72tQdTTasFMFLaFYLywEvTElmnEuA";
 
-			}).done(function(results) {
+// 		// second api call for the photo, we may not even need this
+// 		$.ajax({
+// 			url: queryURL,
+// 			method: "GET"
 
-				// texty += results[0].getUrl({ "maxWidth": 50px, "maxHeight": 50px}); //we'll figure this part out a little later
-				temp.bindPopup(texty).openPopup();
+// 		}).done(function(results) {
 
-			})
-		})
-});
+// 			// texty += results[0].getUrl({ "maxWidth": 50px, "maxHeight": 50px}); //we'll figure this part out a little later
+// 			temp.bindPopup(texty).openPopup();
+
+// 		})
+// 	})
+// });
 
 {{/each}}  
+
+//Hides the login button if when the user isn't logged in
+//console.log("message is "+ {{ message }} + "   logged in is " + {{ loggedin }});
+if(1) {
+  $("#welcomeButton").hide();
+  $("#loginButton").show();        
+}else{
+  $("#welcomeButton").show();
+  $("#loginButton").hide();   
+}
   
-  //Hides the login button if when the user isn't logged in
-  if($("#logoutButton").text().trim() === "") {
-    $("#welcomeButton").hide();        
+$("#modalButton").on("click", function() {
+  $("#myModal").modal();
+});
+
+$(document).on("click", ".popupbtn", function(){
+  event.preventDefault();
+  console.log("hi team. you are in the popupbutton jquery");
+  var idpass = this.id;
+  console.log("idpass is "+idpass);
+  var passer = {
+    "AttractionId": idpass
   }
-    
-  $("#modalButton").on("click", function() {
-    $("#myModal").modal();
-  });
+  $.post("/usercount", passer, function(req, res){
+    //res.redirect("/");
+  })
+});  
+
+$("#welcomeButton").on("click", function(){
+
+});
+
+$("#loginButton").on("click", function(){
+
+});
 
 </script>      
 
