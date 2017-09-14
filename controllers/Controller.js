@@ -42,9 +42,9 @@ app.get("/", isLoggedIn, function(req, res) {
       whichPartial: function() { return "googAutoFill"; },
       user: req.user,
       loggedin: true,
+      modalActive: false,
       message: " Logout " + req.user.username
     });   
-    console.log(req.user);
     username = req.user.username;
 
   });
@@ -62,17 +62,15 @@ app.post("/", function(req, res) {
     "attraction": userinputattr,
     "lat": userinputlat,
     "lng": userinputlng
+  });
 
-  })
+  Userlogs.create(
+  {
+    "username": username,
+    "attraction": req.body.name
+  });
 
-    Userlogs.create(
-    {
-      "username": username,
-      "attraction": req.body.name
-
-  })
-
-    res.redirect("/");
+  res.redirect("/");
 
 });
 
@@ -84,7 +82,7 @@ app.post("/usercount", function(req, res) {
     {
       "username": username,
       "attraction": userinputattr
-  })
+    });
 
     res.redirect("/");
 });
@@ -93,9 +91,9 @@ app.get("api/:id", function(req, res) {
   var input = req.params.id;
 
   Attractions.findAll({
-  where: {
-    placeId: input
-  }
+    where: {
+      placeId: input
+    }
   });
 });
 
@@ -107,7 +105,19 @@ app.get("/login", function(req, res) {
 
   res.render('index', { 
     whichPartial: function() { return "login";},
-    loggedin: false
+    loggedin: false,
+    modalActive: false
+    });
+
+});
+
+// Route for the login path with the modal to pop up
+app.get("/logint/", function(req, res) {
+
+  res.render('index', { 
+    whichPartial: function() { return "login";},
+    loggedin: false,
+    modalActive: true
     });
 
 });
@@ -146,8 +156,13 @@ function isLoggedIn(req, res, next) {
 
 app.get('/signup', function(req, res) {
   // render the page and pass in any flash data if it exists
+  console.log("you are in signup");
   
-  res.render('partials/signup.handlebars');
+  res.render("index", { 
+    whichPartial: function() { return "signup" },
+    loggedin: false,
+    modalActive: true
+  });
 
   //This below link loads the index page with the signup in the modal
   // res.render('index', { whichPartial: function() { return "signup";} });
