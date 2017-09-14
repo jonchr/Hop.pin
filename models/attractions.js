@@ -15,6 +15,12 @@ module.exports = function(sequelize, DataTypes) {
 
 		lng: {
 			type: DataTypes.FLOAT
+		},
+
+		counter: {
+			type: DataTypes.INTEGER,
+			defaultValue: 1
+			
 		}
 
 	});

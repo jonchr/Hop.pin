@@ -26,14 +26,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // Create all our routes and set up logic within those routes where required.
 //If you're not logged in, function directs you to the login path
 app.get("/", isLoggedIn, function(req, res) {
-  // Attractions.hasMany(Userlogs);
-  // Attractions.findAll({
-  //     include: [
-  //       {
-  //         model: Userlogs,
-  //       }
-  //     ]
-  //   }).then(function (data){
+
     Attractions.findAll({}).then(function (data){
     console.log("you are in home route");
 
@@ -76,15 +69,23 @@ app.post("/", function(req, res) {
 
 app.post("/usercount", function(req, res) {
   //add all info into db
-  var userinputattr = req.body.name;
 
     Userlogs.create(
     {
       "username": username,
-      "attraction": userinputattr
-    });
+      "attractionId": req.body.attractionId,
 
-    res.redirect("/");
+  })
+
+    Attractions.increment(
+      "counter",
+        { where: 
+          {
+            "id": req.body.attractionId 
+          }
+        }).then(function(data) {
+          console.log("success");
+      });
 });
 
 app.get("api/:id", function(req, res) {
