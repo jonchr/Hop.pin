@@ -99,6 +99,9 @@ html, body {
 	font-size: 20px;
 	color: white;
 }
+p.labelText {
+	margin-bottom: 0px;
+}
 
 h2{
 	font-family: 'Shadows Into Light', cursive;
@@ -172,6 +175,13 @@ h3{
 #modaldial{
 	background-color: rgba(79,78,156,.96);
 	padding:30px;	
+}
+.modal-footer {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+.modal-header {
+	border-bottom: none;
 }
 
 .footer {

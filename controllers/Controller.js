@@ -42,6 +42,7 @@ app.get("/", isLoggedIn, function(req, res) {
       whichPartial: function() { return "googAutoFill"; },
       user: req.user,
       loggedin: true,
+      modalActive: false,
       message: " Logout " + req.user.username
     });   
     username = req.user.username;
@@ -104,7 +105,8 @@ app.get("/login", function(req, res) {
 
   res.render('index', { 
     whichPartial: function() { return "login";},
-    loggedin: false
+    loggedin: false,
+    modalActive: false
     });
 
 });
@@ -143,8 +145,13 @@ function isLoggedIn(req, res, next) {
 
 app.get('/signup', function(req, res) {
   // render the page and pass in any flash data if it exists
+  console.log("you are in signup");
   
-  res.render('partials/signup.handlebars');
+  res.render("index", { 
+    whichPartial: function() { return "signup" },
+    loggedin: false,
+    modalActive: true
+  });
 
   //This below link loads the index page with the signup in the modal
   // res.render('index', { whichPartial: function() { return "signup";} });

@@ -182,6 +182,12 @@ if({{ loggedin }}) {
   $("#modalButton").hide();        
 }
   
+if({{modalActive}}) {
+  console.log("modal is active");
+  $("#myModal").modal();
+}
+
+
 $("#modalButton").on("click", function() {
   $("#myModal").modal();
 });
