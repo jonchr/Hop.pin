@@ -83,7 +83,7 @@
  
 <script>
 
-var mymap = L.map('mapid').setView([38.9072, -77.0369], 11);
+var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
 mymap.createPane('labels');
 mymap.getPane('labels').style.zIndex = 650;
 mymap.getPane('labels').style.pointerEvents = 'none';
@@ -95,11 +95,42 @@ var positron = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor
 });
 positron.addTo(mymap);
 
+var orangeIcon = L.icon({
+  iconUrl: './assets/orange-imgs.png',
+  iconSize:     [50, 50], // size of the icon
+  iconAnchor:   [23, 38], // point of the icon which will correspond to marker's location
+  popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+})
+var yellowIcon = L.icon({
+  iconUrl: './assets/yellow-imgs.png',
+  iconSize: [50, 50], // size of the icon
+  iconAnchor:   [23, 38], // point of the icon which will correspond to marker's location
+  popupAnchor:  [0, 0]
+})
+var redIcon = L.icon({
+  iconUrl: './assets/red-imgs.png',
+  iconSize:     [50, 50], // size of the icon
+  iconAnchor:   [23, 38], // point of the icon which will correspond to marker's location
+  popupAnchor:  [0, 0]
+})
+
 {{#each attractions}}
-var temp = L.marker([{{this.lat}}, {{this.lng}}]).addTo(mymap);
+var markerLocation = new L.LatLng({{this.lat}}, {{this.lng}});
+var mapicon;
+var counter = 1
+if(counter<2){
+  mapicon = yellowIcon;
+}else if (counter > 5 && counter < 8){
+  mapicon = orangeIcon;
+}else {
+  mapicon = redIcon;
+}
+
+
+var temp = L.marker(markerLocation, {icon: mapicon}).addTo(mymap);
 var place = "{{this.attraction}}";
+
 var router = {{this.id}};
-//var modeler = {{this.model}}
 var texty = "<h3 class='buttonh3'>" + place + "</h3><br><button type='submit' class='btn btn-default popupbtn' id="+router+">I've been here!</button>";
 var temppop = L.popup().setContent(texty);
 
