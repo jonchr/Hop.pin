@@ -28,7 +28,6 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 app.get("/", isLoggedIn, function(req, res) {
 
     Attractions.findAll({}).then(function (data){
-    console.log("you are in home route");
 
     res.render("index", { 
       attractions: data, 
@@ -129,7 +128,6 @@ app.post('/login', passport.authenticate('local-login', {
   failureRedirect : '/login', // redirect back to the signup page if there is an error
 }),
   function(req, res) {
-    console.log("hello");
 
     if (req.body.remember) {
       req.session.cookie.maxAge = 1000 * 60 * 3;
@@ -146,7 +144,6 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
     return next();
 
-  console.log("Not logged in");
   // if they aren't redirect them to the home page
   res.redirect('/login');
 }
@@ -157,7 +154,6 @@ function isLoggedIn(req, res, next) {
 
 app.get('/signup', function(req, res) {
   // render the page and pass in any flash data if it exists
-  console.log("you are in signup");
   
   res.render("index", { 
     whichPartial: function() { return "signup" },
@@ -179,7 +175,6 @@ app.post('/signup', passport.authenticate('local-signup', {
 // LOGOUT ==============================
 // =====================================
 app.get('/logout', function(req, res) {
-  console.log("you're in logout on server");
   req.logout();
   //req.session.destroy();
   res.redirect('/');
