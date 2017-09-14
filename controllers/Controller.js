@@ -62,15 +62,13 @@ app.post("/", function(req, res) {
     "attraction": userinputattr,
     "lat": userinputlat,
     "lng": userinputlng
-
-  })
+  });
 
     Userlogs.create(
     {
       "username": username,
       "attraction": req.body.name
-
-  })
+  });
 
     res.redirect("/");
 
@@ -84,7 +82,7 @@ app.post("/usercount", function(req, res) {
     {
       "username": username,
       "attraction": userinputattr
-  })
+    });
 
     res.redirect("/");
 });
@@ -93,9 +91,9 @@ app.get("api/:id", function(req, res) {
   var input = req.params.id;
 
   Attractions.findAll({
-  where: {
-    placeId: input
-  }
+    where: {
+      placeId: input
+    }
   });
 });
 

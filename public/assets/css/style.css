@@ -87,6 +87,26 @@ html, body {
 	border-color: rgba(2,138,136, 1);
 }
 
+#loginText {
+	font-family: 'Shadows Into Light', cursive !important;
+	font-size: 50pt;
+	color: white;
+	margin: 0;
+}
+
+.labelText {
+	font-family: 'Faustina', serif;
+	font-size: 20px;
+	color: white;
+}
+
+h2{
+	font-family: 'Shadows Into Light', cursive;
+	font-size:25pt;
+	color:white;
+	padding:10px;
+	margin:0;
+}
 
 h3{
 	font-family: 'Faustina', serif;
@@ -104,13 +124,7 @@ h3{
 	margin:0;	
 }
 
-h2{
-	font-family: 'Shadows Into Light', cursive;
-	font-size:25pt;
-	color:white;
-	padding:10px;
-	margin:0;
-}
+
 
 #explainpanel{
 	background-color:rgba(2,138,136,.9);
@@ -150,13 +164,13 @@ h2{
     z-index: 10;        
 }​
 
-.modal.custom .modal-dialog {
+.modal.custom.modal-dialog {
     width:50%;
     margin:0 auto;
     /*add what you want here*/}
 
 #modaldial{
-	background-color: rgba(79,78,156,.9);
+	background-color: rgba(79,78,156,.96);
 	padding:30px;	
 }
 
