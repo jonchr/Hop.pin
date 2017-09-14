@@ -44,7 +44,7 @@
           </div>
         </div> <!-- div for logout drop -->  --}}
 
-        <button type="button" class="btn btn-danger useroption" type="button" id="welcomeButton"><span class="glyphicon glyphicon-user"></span> {{ message }}
+        <button type="button" class="btn btn-danger useroption" type="button" id="logoutButton"><span class="glyphicon glyphicon-user"></span> {{ message }}
         </button>           
         
         <button type="button" class="btn btn-danger useroption" id="loginButton" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Login Here.
@@ -142,11 +142,11 @@ temp.bindPopup(temppop, { className: "popcss" });
 //Hides the login button if when the user isn't logged in
 console.log("logged in is " + {{ loggedin }});
 if({{ loggedin }}) {
-  $("#welcomeButton").show();
+  $("#logoutButton").show();
   $("#loginButton").hide();
   $("#modalButton").show();        
 }else{
-  $("#welcomeButton").hide();
+  $("#logoutButton").hide();
   $("#loginButton").show();   
   $("#modalButton").hide();        
 }
@@ -168,14 +168,15 @@ $(document).on("click", ".popupbtn", function(){
   })
 });  
 
-$("#welcomeButton").on("click", function(){
-  $.get("/logout");
-});
 
 $("#loginButton").on("click", function(){
   $("#myModal").modal();
   $.get("/login");
 });
+
+$("#logoutButton").on("click", function() {
+  window.location.replace("/logout");
+})
 
 </script>      
 

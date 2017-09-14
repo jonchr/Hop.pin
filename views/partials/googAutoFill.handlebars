@@ -100,9 +100,12 @@
           "name": name,
           "state": state
         }
+
         $.post("/", passer, function(req, res){
-          res.redirect("/");
-        })
+          
+        }).done(function(res){
+          window.location.replace("/");
+        });
 
 
       });

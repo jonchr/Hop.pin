@@ -44,7 +44,6 @@ app.get("/", isLoggedIn, function(req, res) {
       loggedin: true,
       message: " Logout " + req.user.username
     });   
-    console.log(req.user);
     username = req.user.username;
 
   });
@@ -64,13 +63,13 @@ app.post("/", function(req, res) {
     "lng": userinputlng
   });
 
-    Userlogs.create(
-    {
-      "username": username,
-      "attraction": req.body.name
+  Userlogs.create(
+  {
+    "username": username,
+    "attraction": req.body.name
   });
 
-    res.redirect("/");
+  res.redirect("/");
 
 });
 
