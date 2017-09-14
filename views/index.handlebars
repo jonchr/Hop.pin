@@ -27,19 +27,33 @@
   </div>
   
   <div class="row"><!-- dialog row -->
-    <div class="col-md-9 col-md-offset-1"> <!-- dialog col -->
-      <div class="panel" id="userpan">  
-        <button type="button" class="btn btn-danger useroption" id="welcomeButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-ok"></span><p>{{ message }}</p></button>   
-        <button type="button" class="btn btn-danger useroption" id="loginButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-remove"></span><p>{{ message }}</p>
+    <div class="col-md-9 col-md-offset-1"> <!-- dialog col -->         
+      
+      <div class="panel" id="explainpanel"> <!-- pan for text -->
+        <h3> Welcome to Hop.Pin! Use our map to find popular attractions for your next trip, or add your own hoppin' site.</h3> 
+      </div> <!-- pan for text -->
+      
+      <div class="panel" id="buttonpan">  <!-- pan for buttons -->
+        
+{{!--         <div class="dropdown" id="welcomedrop">  <!-- div for logout drop -->
+          <button type="button" class="btn btn-danger dropdown-toggle useroption" type="button" id="welcomeButton"><span class="glyphicon glyphicon-ok"></span> {{ message }}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="welcomeButton">
+            <a class="dropdown-item" href="/logout">Logout</a>
+            <a class="dropdown-item" href="#">Action</a>
+          </div>
+        </div> <!-- div for logout drop -->  --}}
+
+        <button type="button" class="btn btn-danger useroption" type="button" id="welcomeButton"><span class="glyphicon glyphicon-user"></span> {{ message }}
+        </button>           
+        
+        <button type="button" class="btn btn-danger useroption" id="loginButton" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Login Here.
         </button>          
-      </div>         
-      <div class="panel" id="explainpanel">
-        <h3> Welcome to Hop.Pin, the best site to find popular, highly rated attractions for your next trip. Search the map for new ideas of places to visit or add a new hoppin' site with the marker button.</h3> 
-      </div> 
-      <div class="panel" id="buttonpan">  
-        <button type="button" class="btn btn-danger" id="modalButton" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-map-marker"></span>
+        
+        <button type="button" class="btn btn-danger useroption" id="modalButton" data-toggle="modal"><span class="glyphicon glyphicon-map-marker"></span>   Add a site
         </button>
-      </div>  
+      
+      </div>  <!-- pan for buttons -->
     </div><!-- dialog col -->
   </div><!-- dialog row -->     
 
@@ -126,13 +140,15 @@ temp.bindPopup(temppop, { className: "popcss" });
 {{/each}}  
 
 //Hides the login button if when the user isn't logged in
-//console.log("message is "+ {{ message }} + "   logged in is " + {{ loggedin }});
-if(1) {
-  $("#welcomeButton").hide();
-  $("#loginButton").show();        
-}else{
+console.log("logged in is " + {{ loggedin }});
+if({{ loggedin }}) {
   $("#welcomeButton").show();
-  $("#loginButton").hide();   
+  $("#loginButton").hide();
+  $("#modalButton").show();        
+}else{
+  $("#welcomeButton").hide();
+  $("#loginButton").show();   
+  $("#modalButton").hide();        
 }
   
 $("#modalButton").on("click", function() {
@@ -153,11 +169,12 @@ $(document).on("click", ".popupbtn", function(){
 });  
 
 $("#welcomeButton").on("click", function(){
-
+  $.get("/logout");
 });
 
 $("#loginButton").on("click", function(){
-
+  $("#myModal").modal();
+  $.get("/login");
 });
 
 </script>      

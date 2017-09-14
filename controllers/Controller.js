@@ -23,10 +23,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-var isloggy = true;
-
 // Create all our routes and set up logic within those routes where required.
-//If you're not logged in, sends you to the login path
+//If you're not logged in, function directs you to the login path
 app.get("/", isLoggedIn, function(req, res) {
   // Attractions.hasMany(Userlogs);
   // Attractions.findAll({
@@ -38,23 +36,13 @@ app.get("/", isLoggedIn, function(req, res) {
   //   }).then(function (data){
     Attractions.findAll({}).then(function (data){
     console.log("you are in home route");
-    
-    if(req.user.username=""){
-      isloggy = false;
-      console.log("controller loggy is "+isloggy);
-    }
-    else{
-      isloggy = true;
-      console.log("controller loggy is "+isloggy);
-    }
 
-    //If not logged in
     res.render("index", { 
       attractions: data, 
       whichPartial: function() { return "googAutoFill"; },
       user: req.user,
-      loggedin: isloggy,
-      message: "Welcome, " + req.user.username
+      loggedin: true,
+      message: " Logout " + req.user.username
     });   
     console.log(req.user);
     username = req.user.username;
@@ -118,7 +106,8 @@ app.get("api/:id", function(req, res) {
 app.get("/login", function(req, res) {
 
   res.render('index', { 
-    whichPartial: function() { return "login";}
+    whichPartial: function() { return "login";},
+    loggedin: false
     });
 
 });
@@ -174,9 +163,10 @@ app.post('/signup', passport.authenticate('local-signup', {
 // LOGOUT ==============================
 // =====================================
 app.get('/logout', function(req, res) {
+  console.log("you're in logout on server");
   req.logout();
-  res.redirect('/login');
-
+  //req.session.destroy();
+  res.redirect('/');
 });
 
 // Export routes for server.js to use.

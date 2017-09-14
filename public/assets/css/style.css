@@ -77,25 +77,16 @@ html, body {
 
 .useroption{
 	font-family: 'Shadows Into Light', cursive;
-	font-size:40pt;
+	font-size:16pt;
 	color:white;
 	background-color: rgba(2,138,136, 1);
-	height:100px;
-	width:100px;
-	padding: 20px 18px 20px 15px;
+	height:40px;
+	width:100%;
+	padding: 4px 4px 4px 4px;
+	margin:2px;
 	border-color: rgba(2,138,136, 1);
 }
 
-#modalButton{
-	font-family: 'Shadows Into Light', cursive;
-	font-size:40pt;
-	color:white;
-	background-color: rgba(2,138,136, 1);
-	height:100px;
-	width:100px;
-	padding: 20px 18px 20px 15px;
-	border-color: rgba(2,138,136, 1);
-}
 
 h3{
 	font-family: 'Faustina', serif;
@@ -132,16 +123,15 @@ h2{
 
 #buttonpan{
 	float:right;
-	width:10%;
+	width:20%;
 	background-color: rgba(2,138,136,0.0);
-	margin-top:10px;
+	margin-top:0px;
 }
 
 #userpan{
-	float:left;
+	float:right;
 	width:10%;
 	background-color: rgba(2,138,136,0.0);
-	margin-top:10px;
 }
 
 .pac-container {
