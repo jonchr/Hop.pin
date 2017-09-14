@@ -111,6 +111,17 @@ app.get("/login", function(req, res) {
 
 });
 
+// Route for the login path with the modal to pop up
+app.get("/logint/", function(req, res) {
+
+  res.render('index', { 
+    whichPartial: function() { return "login";},
+    loggedin: false,
+    modalActive: true
+    });
+
+});
+
 // process the login form
 app.post('/login', passport.authenticate('local-login', {
   successRedirect : '/', // redirect to the secure profile section
