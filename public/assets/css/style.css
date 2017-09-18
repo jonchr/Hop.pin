@@ -1,5 +1,5 @@
 body {
-    background-image: url("../wallpaper.jpg");
+    background-color: rgb(208,87,72);
 	background-size: 100%;
 }
 
@@ -64,27 +64,21 @@ html, body {
 
 #JTtitle{
 	font-family: 'Shadows Into Light', cursive;
-	font-size:90pt;
+	font-size:70pt;
 	color:white;
-	margin:0;
-}
-
-.jumbotron {
-	background-color: #d05748;
-	height: 200px;
-	padding: 20px;
+	font-weight: bold;
 }
 
 .useroption{
 	font-family: 'Shadows Into Light', cursive;
 	font-size:16pt;
-	color:white;
-	background-color: rgba(2,138,136, 1);
+	color:rgb(208,87,72);
+	background-color: white;
 	height:40px;
 	width:100%;
 	padding: 4px 4px 4px 4px;
 	margin:2px;
-	border-color: rgba(2,138,136, 1);
+	border-color: white;
 }
 
 #loginText {
@@ -95,9 +89,9 @@ html, body {
 }
 
 .labelText {
-	font-family: 'Faustina', serif;
+	font-family: 'Shadows Into Light', cursive;
 	font-size: 20px;
-	color: white;
+	color: rgb(208,87,72);
 }
 p.labelText {
 	margin-bottom: 0px;
@@ -112,9 +106,9 @@ h2{
 }
 
 h3{
-	font-family: 'Faustina', serif;
+	font-family: 'Shadows Into Light', cursive;
 	font-size:15pt;
-	color:white;
+	color:rgb(208,87,72);
 	padding:0;
 	margin:0;
 }
@@ -127,26 +121,28 @@ h3{
 	margin:0;	
 }
 
-
+#titletxt{
+	text-align:center;
+	width:100%;
+	margin-top:40px;
+}
 
 #explainpanel{
-	background-color:rgba(2,138,136,.9);
-	padding:25px 30px 25px 30px;
+	background-color:white;
+	padding:10px 10px 10px 10px;
 	float:left;
-	width:70%;
-	margin-right: 5%;
-	margin-left: 5%;
+	margin-top:50px;
 }
 
 #buttonpan{
-	float:right;
+	float:left;
 	width:20%;
 	background-color: rgba(2,138,136,0.0);
 	margin-top:0px;
 }
 
 #userpan{
-	float:right;
+	float:left;
 	width:10%;
 	background-color: rgba(2,138,136,0.0);
 }
@@ -200,6 +196,8 @@ h3{
 	margin: 30px 0px 0px 0px;
 }
 
-
+#main-navigation{
+	width:20%;
+}
 
 

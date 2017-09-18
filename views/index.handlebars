@@ -1,69 +1,32 @@
 
-{{!-- <span class="pull-right" style="margin-right: 20px">
-  <h4>
-    {{ message }}!
-    <a href="/logout" style="text-align: right;">{{ logout }}</a>
-  </h4>
-</span> --}}
-
-<div class="container" id="maincontain">
-{{!-- Displays username and provides logout via dropdown menu. Only appears when user is logged in thanks to jQuery --}}
-{{!-- <span class="dropdown btn-group pull-right" style="margin-right: 15px;" id="welcomeButton">
-  <button type="button" class="btn btn-danger dropdown-toggle" id="logoutButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ message }}
-  </button>
-  <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <h4 style="text-align: right; margin-right: 10px;"><a class="dropdown-item" href="/logout">Logout</a></h4>
-  </span>
-</span> --}}
+<div class="container-fluid" id="maincontain">
 
   <div class="row">
-    <div class="col-md-8 col-md-offset-2"><!-- jumbotron col -->
-      <div class="jumbotron">
-        
-        <h1 class="text-center" id="JTtitle"><strong>Hop.pin</h1></strong></h1>
-              
-      </div> <!-- jumbotron class -->
-    </div> <!-- jumbotron col -->
-  </div>
-  
-  <div class="row"><!-- dialog row -->
-    <div class="col-md-9 col-md-offset-1"> <!-- dialog col -->         
-      
-      <div class="panel" id="explainpanel"> <!-- pan for text -->
-        <h3> Welcome to Hop.Pin! Use our map to find popular attractions for your next trip, or add your own hoppin' site.</h3> 
-      </div> <!-- pan for text -->
-      
-      <div class="panel" id="buttonpan">  <!-- pan for buttons -->
-        
-{{!--         <div class="dropdown" id="welcomedrop">  <!-- div for logout drop -->
-          <button type="button" class="btn btn-danger dropdown-toggle useroption" type="button" id="welcomeButton"><span class="glyphicon glyphicon-ok"></span> {{ message }}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="welcomeButton">
-            <a class="dropdown-item" href="/logout">Logout</a>
-            <a class="dropdown-item" href="#">Action</a>
+    <div class="col-md-3"><!-- map col -->
+      <div class="main-menu">
+          <div id="titletxt">
+            <h1 id="JTtitle"><strong>Hop.Pin</h1></strong>
           </div>
-        </div> <!-- div for logout drop -->  --}}
-
-        <button type="button" class="btn btn-danger useroption" type="button" id="logoutButton"><span class="glyphicon glyphicon-user"></span> {{ message }}
-        </button>           
-        
-        <button type="button" class="btn btn-danger useroption" id="loginButton" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Login Here.
-        </button>          
-        
-        <button type="button" class="btn btn-danger useroption" id="modalButton" data-toggle="modal"><span class="glyphicon glyphicon-map-marker"></span>   Add a site
-        </button>
-      
-      </div>  <!-- pan for buttons -->
-    </div><!-- dialog col -->
-  </div><!-- dialog row -->     
-
-
-  <div class="row"><!-- map row -->
-    <div class="col-md-10 col-md-offset-1"><!-- map col -->
+          <div class="panel" id="explainpanel"> <!-- pan for text -->
+            <h3> Welcome to Hop.Pin! Use our map to find popular attractions for your next trip, or add your own hoppin' site.</h3> 
+          </div> <!-- pan for text -->
+          <div>
+             <button type="button" class="btn btn-danger useroption" type="button" id="logoutButton"><span class="glyphicon glyphicon-user"></span> {{ message }}
+            </button>           
+            
+            <button type="button" class="btn btn-danger useroption" id="loginButton" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Login Here.
+            </button>          
+            
+            <button type="button" class="btn btn-danger useroption" id="modalButton" data-toggle="modal"><span class="glyphicon glyphicon-map-marker"></span>   Add a site
+            </button>     
+          </div>
+      </div>      
+    </div>
+    <div class="col-9">
+      <div id="main-navigation" class="menu-wrapper"></div>
       <div id="mapid" style="height: 100vh; z-index:9"></div>
-    </div><!-- map col -->
-  </div><!-- map row -->
-
+    </div>  
+  </div>
   <div class="modal custom fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" >
       <div class="modal-content" id="modaldial">
@@ -74,12 +37,6 @@
     </div> {{!-- /.modal-dialog --}}
   </div> {{!-- /.modal --}}
 </div>  <!-- container -->
-
-<footer class="footer text-right">
-  <div class="container">
-    <span class="text-muted">&copy; Anastasia Mark, James Webber, Jon Christensen, and Will Tarkenton 2017</span>
-  </div>
-</footer>  
  
 <script>
 

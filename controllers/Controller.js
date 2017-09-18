@@ -103,22 +103,30 @@ app.get("api/:id", function(req, res) {
 
 app.get("/login", function(req, res) {
 
+  Attractions.findAll({}).then(function (data){
+
   res.render('index', { 
+    attractions: data, 
     whichPartial: function() { return "login";},
     loggedin: false,
     modalActive: false
     });
+  });
 
 });
 
 // Route for the login path with the modal to pop up
 app.get("/logint/", function(req, res) {
 
+  Attractions.findAll({}).then(function (data){
+
   res.render('index', { 
+    attractions: data, 
     whichPartial: function() { return "login";},
     loggedin: false,
     modalActive: true
     });
+  });
 
 });
 
