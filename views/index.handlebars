@@ -42,7 +42,11 @@
 
 var loggedIn = {{loggedIn}};
 
-var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
+var mymap = L.map('mapid', {'zoomControl': false,}).setView([38.9072, -77.0369], 13);
+//this line bellow makes the control zoom apear on the right on the page
+mymap.addControl(L.control.zoom({position: 'topright'}));
+// not sure why this line bellow is here but might com in handy
+// mymap.addControl(new L.control.Loading());
 mymap.createPane('labels');
 mymap.getPane('labels').style.zIndex = 650;
 mymap.getPane('labels').style.pointerEvents = 'none';
