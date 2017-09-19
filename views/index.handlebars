@@ -40,6 +40,8 @@
  
 <script>
 
+var loggedIn = {{loggedIn}};
+
 var mymap = L.map('mapid').setView([38.9072, -77.0369], 13);
 mymap.createPane('labels');
 mymap.getPane('labels').style.zIndex = 650;
@@ -86,7 +88,13 @@ if(counter<5){
 var temp = L.marker(markerLocation, {icon: mapicon}).addTo(mymap);
 var place = "{{this.attraction}}";
 var router = {{this.id}};
-var texty = "<h3 class='buttonh3'>" + place + "</h3><br><button type='submit' class='btn btn-default popupbtn' id="+ router +">I've been here!</button>";
+
+var texty = "<h3 class='buttonh3'>" + place + "</h3>";
+//If logged in, loads the "I've been here!" button
+if(loggedIn){
+ texty += "<br><button type='submit' class='btn btn-default popupbtn' id="+ router +">I've been here!</button>";
+}
+
 var temppop = L.popup().setContent(texty);
 
 console.log({{this.model}})
@@ -96,12 +104,12 @@ temp.bindPopup(temppop, { className: "popcss" });
 {{/each}}  
 
 //Hides the login button if when the user isn't logged in
-console.log("logged in is " + {{ loggedin }});
-if({{ loggedin }}) {
+console.log("logged in is " + loggedIn);
+if(loggedIn) {
   $("#logoutButton").show();
   $("#loginButton").hide();
   $("#modalButton").show();        
-}else{
+} else {
   $("#logoutButton").hide();
   $("#loginButton").show();   
   $("#modalButton").hide();        

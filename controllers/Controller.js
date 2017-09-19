@@ -33,7 +33,7 @@ app.get("/", isLoggedIn, function(req, res) {
       attractions: data, 
       whichPartial: function() { return "googAutoFill"; },
       user: req.user,
-      loggedin: true,
+      loggedIn: true,
       modalActive: false,
       message: " Logout " + req.user.username
     });   
@@ -108,7 +108,7 @@ app.get("/login", function(req, res) {
   res.render('index', { 
     attractions: data, 
     whichPartial: function() { return "login";},
-    loggedin: false,
+    loggedIn: false,
     modalActive: false
     });
   });
@@ -123,7 +123,7 @@ app.get("/logint/", function(req, res) {
   res.render('index', { 
     attractions: data, 
     whichPartial: function() { return "login";},
-    loggedin: false,
+    loggedIn: false,
     modalActive: true
     });
   });
@@ -165,7 +165,7 @@ app.get('/signup', function(req, res) {
   
   res.render("index", { 
     whichPartial: function() { return "signup" },
-    loggedin: false,
+    loggedIn: false,
     modalActive: true
   });
 
