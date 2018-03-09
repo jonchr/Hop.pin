@@ -27,9 +27,11 @@
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.11.3",
+    "moment": "^2.21.0",
     "morgan": "^1.6.0",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.2",
+    "npm": "^5.7.1",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "sequelize": "^4.8.3"
